@@ -1,0 +1,1 @@
+export { default as UserDataPresenter } from './userData.presenter'
