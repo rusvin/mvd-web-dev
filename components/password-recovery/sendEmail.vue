@@ -1,10 +1,10 @@
 <template>
     <div>
         <v-card-text>
-            <h1 class="text-center">Wachtwoord resetten</h1>
+            <h1 class="text-center">Wachtwoord herstellen</h1>
             <br>
             <p class="text-center">
-                We versturen een email naar je waardoor je je e-mailadres kan resetten
+                We sturen je direct een e-mail waarmee je je wachtwoord opnieuw kunt instellen.
             </p>
         </v-card-text>
         <v-card-text v-if="message">
@@ -29,7 +29,7 @@
                         />
                     </v-col>
                     <v-col cols="12" v-if="!hideInput">
-                        <v-btn block color="blue" @click="sendPasswordRecoveryEmail">
+                        <v-btn block size="large" color="blue" @click="sendPasswordRecoveryEmail">
                             Verstuur e-mail
                         </v-btn>
                     </v-col>

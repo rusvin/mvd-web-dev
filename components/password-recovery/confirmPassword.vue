@@ -63,12 +63,12 @@
                         />
                     </v-col>
                     <v-col cols="12" v-if="hideInput">
-                        <v-btn block color="blue" @click="gotoDashboard">
+                        <v-btn block size="large" color="blue" @click="gotoDashboard">
                             Ga naar inloggen
                         </v-btn>
                     </v-col>
                     <v-col cols="12" v-else>
-                        <v-btn block color="blue" @click="sendPasswordRecoveryConfirm">
+                        <v-btn block size="large" color="blue" @click="sendPasswordRecoveryConfirm">
                             Wachtwoord herstellen
                         </v-btn>
                     </v-col>

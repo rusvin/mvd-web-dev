@@ -2,6 +2,10 @@
     <div>
         <v-card-text>
             <h1 class="text-center">Aanmelden</h1>
+            <br>
+            <p class="text-center">
+                Meld je aan en profiteer van persoonlijk advies, direct inzicht in je gegevens & vergelijkingen.
+            </p>
         </v-card-text>
         <v-card-text v-if="message">
             <v-alert :type="messageType" variant="tonal" :icon="messageIcon">
@@ -36,6 +40,7 @@
                                 :rules="validationRules.email"
                                 color="blue"
                                 variant="outlined"
+                                :error-messages="emailErrorMessages"
                         />
                     </v-col>
                     <v-col cols="12">
@@ -51,9 +56,16 @@
                                 color="blue"
                                 variant="outlined"
                         />
+                        <v-checkbox v-model="checkbox" color="blue">
+                            <template v-slot:label>
+                                <small>
+                                    Ik ga akkoord met de voorwaarden en Vergelijkdirect.com<br> mag mij telefonisch en per e-mail benaderen.
+                                </small>
+                            </template>
+                        </v-checkbox>
                     </v-col>
                     <v-col cols="12">
-                        <v-btn color="blue" block @click="registerUser" :disabled="!isEmailValid">
+                        <v-btn color="blue" size="large" block @click="registerUser" :disabled="emailErrorMessages || !checkbox">
                             Aanmelden
                         </v-btn>
                     </v-col>
@@ -74,14 +86,14 @@
     let messageType = ref('')
     let messageIcon = ref('')
     let success = ref(false)
-    let isEmailValid = ref(true)
+    let emailErrorMessages = ref('')
+    let checkbox = ref(true)
 
     const validationRules = {
         name: [v => !!v || 'Voornaam is verplicht'],
         email: [
             v => !!v || 'E-mailadres is verplicht',
             v => /.+@.+/.test(v) || 'E-mailadres is incorrect',
-            v => (v && isEmailValid.value) || 'Dit e-mailadres is onjuist',
         ],
         phone: [
             v => !!v || 'Mobiele telefoonnummer is verplicht',
@@ -123,6 +135,6 @@
     }
 
     const validateEmail = (): void => {
-        $api.validateEmail({email: userEmail.value}).then((res: any) => isEmailValid.value = res.valid)
+        $api.validateEmail({email: userEmail.value}).then((res: any) => emailErrorMessages.value = res.valid ? '' : 'Dit e-mailadres is onjuist')
     }
 </script>

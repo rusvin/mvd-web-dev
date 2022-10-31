@@ -3,7 +3,9 @@
         <v-card-text>
             <h1 class="text-center">Inloggen</h1>
             <br>
-            <p class="text-center">Log in op je persoonlijke account om al je zaken zelf te regelen.</p>
+            <p class="text-center">
+                Log in op je persoonlijke account. Regel zelf je contracten, vergelijkingen en ontvang persoonlijk advies.
+            </p>
         </v-card-text>
         <v-card-text v-if="errorMessage">
             <v-alert type="error" variant="tonal" :icon="'mdi-close-circle-outline'">
@@ -43,7 +45,7 @@
                         />
                     </v-col>
                     <v-col cols="12">
-                        <v-btn color="info" block @click="userLogin">
+                        <v-btn color="info" size="large" block @click="userLogin">
                             Inloggen
                         </v-btn>
                     </v-col>
