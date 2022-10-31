@@ -1,44 +1,46 @@
 <template>
-    <v-card-text>
-        <h1 class="text-center">Wachtwoord resetten</h1>
-        <br>
-        <p class="text-center">
-            We versturen een email naar je waardoor je je e-mailadres kan resetten
-        </p>
-    </v-card-text>
-    <v-card-text v-if="message">
-        <v-alert :type="messageType" variant="tonal" :icon="messageIcon">
-            {{ message }}
-        </v-alert>
-    </v-card-text>
-    <v-card-text>
-    <v-form ref="sendRecoveryForm" @submit.prevent="sendPasswordRecoveryEmail" lazy-validation>
-        <v-row>
-            <v-col cols="12" v-if="!hideInput">
-                <v-text-field
-                        label="E-mailadres"
-                        id="email-adres"
-                        type="email"
-                        name="email"
-                        color="blue"
-                        :rules="emailRules"
-                        v-model="userEmail"
-                        @keyup.enter="sendPasswordRecoveryEmail"
-                        variant="outlined"
-                />
-            </v-col>
-            <v-col cols="12" v-if="!hideInput">
-                <v-btn block color="blue" @click="sendPasswordRecoveryEmail">
-                    Verstuur e-mail
-                </v-btn>
-            </v-col>
-        </v-row>
-    </v-form>
-    </v-card-text>
+    <div>
+        <v-card-text>
+            <h1 class="text-center">Wachtwoord resetten</h1>
+            <br>
+            <p class="text-center">
+                We versturen een email naar je waardoor je je e-mailadres kan resetten
+            </p>
+        </v-card-text>
+        <v-card-text v-if="message">
+            <v-alert :type="messageType" variant="tonal" :icon="messageIcon">
+                {{ message }}
+            </v-alert>
+        </v-card-text>
+        <v-card-text>
+            <v-form ref="sendRecoveryForm" @submit.prevent="sendPasswordRecoveryEmail" lazy-validation>
+                <v-row>
+                    <v-col cols="12" v-if="!hideInput">
+                        <v-text-field
+                                label="E-mailadres"
+                                id="email-adres"
+                                type="email"
+                                name="email"
+                                color="blue"
+                                :rules="emailRules"
+                                v-model="userEmail"
+                                @keyup.enter="sendPasswordRecoveryEmail"
+                                variant="outlined"
+                        />
+                    </v-col>
+                    <v-col cols="12" v-if="!hideInput">
+                        <v-btn block color="blue" @click="sendPasswordRecoveryEmail">
+                            Verstuur e-mail
+                        </v-btn>
+                    </v-col>
+                </v-row>
+            </v-form>
+        </v-card-text>
+    </div>
 </template>
 
 <script setup lang="ts">
-    const { $mijn } = useNuxtApp()
+    const {$mijn} = useNuxtApp()
     const sendRecoveryForm = ref(null);
     const userEmail = ref(null)
     let message = ref('')

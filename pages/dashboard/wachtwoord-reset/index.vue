@@ -1,6 +1,8 @@
 <template>
-    <send-email v-if="!canPasswordRecovery"/>
-    <confirm-password v-else :email="recoveryEmail" :code="recoveryCode"/>
+    <div>
+        <send-email v-if="!canPasswordRecovery"/>
+        <confirm-password v-else :email="recoveryEmail" :code="recoveryCode"/>
+    </div>
 </template>
 
 <script setup lang="ts">

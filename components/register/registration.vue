@@ -1,66 +1,68 @@
 <template>
-    <v-card-text>
-        <h1 class="text-center">Aanmelden</h1>
-    </v-card-text>
-    <v-card-text>
-        <v-row>
-            <v-col cols="12">
-                <v-alert :type="messageType" variant="tonal" v-if="message" :icon="messageIcon">
-                    {{ message }}
-                </v-alert>
-            </v-col>
-        </v-row>
-        <v-form ref="registerForm" @submit.prevent="registerUser" lazy-validation>
-            <v-row v-if="!success">
+    <div>
+        <v-card-text>
+            <h1 class="text-center">Aanmelden</h1>
+        </v-card-text>
+        <v-card-text>
+            <v-row>
                 <v-col cols="12">
-                    <v-text-field
-                        label="Voornaam"
-                        placeholder="Voornaam"
-                        id="name"
-                        type="text"
-                        name="name"
-                        v-model.lazy="userName"
-                        :rules="validationRules.name"
-                        color="blue"
-                        variant="outlined"
-                    />
-                </v-col>
-                <v-col cols="12">
-                    <v-text-field
-                        label="E-mailadres"
-                        placeholder="gebruiker@email.nl"
-                        id="email-adres"
-                        type="email"
-                        name="email"
-                        @change="validateEmail"
-                        v-model.lazy="userEmail"
-                        :rules="validationRules.email"
-                        color="blue"
-                        variant="outlined"
-                    />
-                </v-col>
-                <v-col cols="12">
-                    <v-text-field
-                        label="Mobiele telefoonnummer"
-                        placeholder="0612345678"
-                        id="phonenumber"
-                        type="text"
-                        name="phonenumber"
-                        maxlength="10"
-                        v-model.lazy="userPhoneNumber"
-                        :rules="validationRules.phone"
-                        color="blue"
-                        variant="outlined"
-                    />
-                </v-col>
-                <v-col cols="12">
-                    <v-btn color="blue" block @click="registerUser" :disabled="!isEmailValid">
-                        Aanmelden
-                    </v-btn>
+                    <v-alert :type="messageType" variant="tonal" v-if="message" :icon="messageIcon">
+                        {{ message }}
+                    </v-alert>
                 </v-col>
             </v-row>
-        </v-form>
-    </v-card-text>
+            <v-form ref="registerForm" @submit.prevent="registerUser" lazy-validation>
+                <v-row v-if="!success">
+                    <v-col cols="12">
+                        <v-text-field
+                                label="Voornaam"
+                                placeholder="Voornaam"
+                                id="name"
+                                type="text"
+                                name="name"
+                                v-model.lazy="userName"
+                                :rules="validationRules.name"
+                                color="blue"
+                                variant="outlined"
+                        />
+                    </v-col>
+                    <v-col cols="12">
+                        <v-text-field
+                                label="E-mailadres"
+                                placeholder="gebruiker@email.nl"
+                                id="email-adres"
+                                type="email"
+                                name="email"
+                                @change="validateEmail"
+                                v-model.lazy="userEmail"
+                                :rules="validationRules.email"
+                                color="blue"
+                                variant="outlined"
+                        />
+                    </v-col>
+                    <v-col cols="12">
+                        <v-text-field
+                                label="Mobiele telefoonnummer"
+                                placeholder="0612345678"
+                                id="phonenumber"
+                                type="text"
+                                name="phonenumber"
+                                maxlength="10"
+                                v-model.lazy="userPhoneNumber"
+                                :rules="validationRules.phone"
+                                color="blue"
+                                variant="outlined"
+                        />
+                    </v-col>
+                    <v-col cols="12">
+                        <v-btn color="blue" block @click="registerUser" :disabled="!isEmailValid">
+                            Aanmelden
+                        </v-btn>
+                    </v-col>
+                </v-row>
+            </v-form>
+        </v-card-text>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -123,6 +125,6 @@
     }
 
     const validateEmail = (): void => {
-        $api.validateEmail({ email: userEmail.value }).then((res: any) => isEmailValid.value = res.valid)
+        $api.validateEmail({email: userEmail.value}).then((res: any) => isEmailValid.value = res.valid)
     }
 </script>

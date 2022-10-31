@@ -1,61 +1,63 @@
 <template>
-    <v-card-text>
-        <h1 class="text-center">Inloggen</h1>
-        <br>
-        <p class="text-center">Log in op je persoonlijke account om al je zaken zelf te regelen.</p>
-    </v-card-text>
-    <v-card-text v-if="errorMessage">
-        <v-alert type="error" variant="tonal" :icon="'mdi-close-circle-outline'">
-            {{ errorMessage }}
-        </v-alert>
-    </v-card-text>
-    <v-card-text>
-        <v-form ref="loginForm" @submit.prevent="userLogin" lazy-validation>
-            <v-row>
-                <v-col cols="12">
-                    <v-text-field
-                        label="E-mailadres"
-                        id="email-adres"
-                        type="email"
-                        name="email"
-                        color="blue"
-                        :rules="emailRules"
-                        v-model="userEmail"
-                        @keyup.enter="userLogin"
-                        variant="outlined"
-                    />
-                </v-col>
-                <v-col cols="12">
-                    <v-text-field
-                        label="Wachtwoord"
-                        :type="isPasswordVisible ? 'text' : 'password'"
-                        :append-inner-icon="isPasswordVisible ? 'mdi-lock-open' : 'mdi-lock'"
-                        @click:append-inner="isPasswordVisible = !isPasswordVisible"
-                        id="password"
-                        name="password"
-                        color="blue"
-                        placeholder="Wachtwoord"
-                        :rules="passwordRules"
-                        v-model="userPassword"
-                        @keyup.enter="userLogin"
-                        variant="outlined"
-                    />
-                </v-col>
-                <v-col cols="12">
-                    <v-btn color="info" block @click="userLogin">
-                        Inloggen
-                    </v-btn>
-                </v-col>
-                <v-col cols="12" class="text-center">
-                    <p>Of</p>
-                    <br>
-                    <router-link to="/dashboard/wachtwoord-reset/" class="mx-2">
-                        Wachtwoord vergeten?
-                    </router-link>
-                </v-col>
-            </v-row>
-        </v-form>
-    </v-card-text>
+    <div>
+        <v-card-text>
+            <h1 class="text-center">Inloggen</h1>
+            <br>
+            <p class="text-center">Log in op je persoonlijke account om al je zaken zelf te regelen.</p>
+        </v-card-text>
+        <v-card-text v-if="errorMessage">
+            <v-alert type="error" variant="tonal" :icon="'mdi-close-circle-outline'">
+                {{ errorMessage }}
+            </v-alert>
+        </v-card-text>
+        <v-card-text>
+            <v-form ref="loginForm" @submit.prevent="userLogin" lazy-validation>
+                <v-row>
+                    <v-col cols="12">
+                        <v-text-field
+                                label="E-mailadres"
+                                id="email-adres"
+                                type="email"
+                                name="email"
+                                color="blue"
+                                :rules="emailRules"
+                                v-model="userEmail"
+                                @keyup.enter="userLogin"
+                                variant="outlined"
+                        />
+                    </v-col>
+                    <v-col cols="12">
+                        <v-text-field
+                                label="Wachtwoord"
+                                :type="isPasswordVisible ? 'text' : 'password'"
+                                :append-inner-icon="isPasswordVisible ? 'mdi-lock-open' : 'mdi-lock'"
+                                @click:append-inner="isPasswordVisible = !isPasswordVisible"
+                                id="password"
+                                name="password"
+                                color="blue"
+                                placeholder="Wachtwoord"
+                                :rules="passwordRules"
+                                v-model="userPassword"
+                                @keyup.enter="userLogin"
+                                variant="outlined"
+                        />
+                    </v-col>
+                    <v-col cols="12">
+                        <v-btn color="info" block @click="userLogin">
+                            Inloggen
+                        </v-btn>
+                    </v-col>
+                    <v-col cols="12" class="text-center">
+                        <p>Of</p>
+                        <br>
+                        <router-link to="/dashboard/wachtwoord-reset/" class="mx-2">
+                            Wachtwoord vergeten?
+                        </router-link>
+                    </v-col>
+                </v-row>
+            </v-form>
+        </v-card-text>
+    </div>
 </template>
 
 <script setup lang="ts">

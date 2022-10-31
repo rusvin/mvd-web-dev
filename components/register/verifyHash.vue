@@ -1,31 +1,35 @@
 <template>
-    <v-card-text v-if="error">
-        <v-row>
-            <v-col cols="12" class="text-center">
-                <v-alert type="error" title="Oeps.." variant="tonal" icon="mdi-close-circle">
-                    Het lijkt erop dat er iets fout gaat. Probeer het later opnieuw of neem contact met ons op (Chat, Telefoon of Whatsapp 035-6857888)
-                </v-alert>
-            </v-col>
-        </v-row>
-    </v-card-text>
-    <v-card-text v-else>
-        <v-row>
-            <v-col cols="12" class="text-center">
-                <v-progress-circular
-                        :size="50"
-                        color="info"
-                        indeterminate
-                ></v-progress-circular>
-                <p class="mt-10 text-lg">
-                    Account wordt geactiveerd
-                </p>
-            </v-col>
-        </v-row>
-    </v-card-text>
+    <div>
+        <v-card-text v-if="error">
+            <v-row>
+                <v-col cols="12" class="text-center">
+                    <v-alert type="error" title="Oeps.." variant="tonal" icon="mdi-close-circle">
+                        Het lijkt erop dat er iets fout gaat. Probeer het later opnieuw of neem contact met ons op
+                        (Chat, Telefoon of Whatsapp 035-6857888)
+                    </v-alert>
+                </v-col>
+            </v-row>
+        </v-card-text>
+        <v-card-text v-else>
+            <v-row>
+                <v-col cols="12" class="text-center">
+                    <v-progress-circular
+                            :size="50"
+                            color="info"
+                            indeterminate
+                    ></v-progress-circular>
+                    <p class="mt-10 text-lg">
+                        Account wordt geactiveerd
+                    </p>
+                </v-col>
+            </v-row>
+        </v-card-text>
+    </div>
 </template>
 
 <script setup lang="ts">
     import {setToken} from "~/composables/useAuth";
+
     const {$mijn} = useNuxtApp()
     const router = useRouter()
 
