@@ -65,7 +65,7 @@
                         </v-checkbox>
                     </v-col>
                     <v-col cols="12">
-                        <v-btn color="blue" size="large" block @click="registerUser" :disabled="emailErrorMessages || !checkbox">
+                        <v-btn color="blue" size="x-large" block @click="registerUser" :disabled="emailErrorMessages || !checkbox">
                             Aanmelden
                         </v-btn>
                     </v-col>

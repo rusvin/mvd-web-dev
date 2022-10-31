@@ -45,7 +45,7 @@
                         />
                     </v-col>
                     <v-col cols="12">
-                        <v-btn color="info" size="large" block @click="userLogin">
+                        <v-btn color="info" size="x-large" block @click="userLogin">
                             Inloggen
                         </v-btn>
                     </v-col>

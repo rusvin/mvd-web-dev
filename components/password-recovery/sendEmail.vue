@@ -29,7 +29,7 @@
                         />
                     </v-col>
                     <v-col cols="12" v-if="!hideInput">
-                        <v-btn block size="large" color="blue" @click="sendPasswordRecoveryEmail">
+                        <v-btn block size="x-large" color="blue" @click="sendPasswordRecoveryEmail">
                             Verstuur e-mail
                         </v-btn>
                     </v-col>
