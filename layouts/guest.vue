@@ -5,13 +5,11 @@
                 <v-row align="center" class="h-screen">
                     <v-card class="pa-4 pt-5 elevation-3" max-width="500" color="transparent">
                         <v-card-item>
-                            <v-card-title>
-                                <v-row>
-                                    <v-col cols="10" offset="1">
-                                        <img src="~/assets/images/vergelijkdirect-logo-blue.svg">
-                                    </v-col>
-                                </v-row>
-                            </v-card-title>
+                            <v-row>
+                                <v-col cols="12" class="text-center">
+                                    <img src="~/assets/images/vergelijkdirect-logo-blue.svg" id="quest-logo">
+                                </v-col>
+                            </v-row>
                         </v-card-item>
                         <slot/>
                     </v-card>
@@ -27,5 +25,8 @@
         background-size: cover;
         position: relative;
         background-position: 100%;
+    }
+    #quest-logo {
+        max-width: 250px;
     }
 </style>
