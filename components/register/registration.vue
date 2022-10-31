@@ -3,14 +3,12 @@
         <v-card-text>
             <h1 class="text-center">Aanmelden</h1>
         </v-card-text>
+        <v-card-text v-if="message">
+            <v-alert :type="messageType" variant="tonal" :icon="messageIcon">
+                {{ message }}
+            </v-alert>
+        </v-card-text>
         <v-card-text>
-            <v-row>
-                <v-col cols="12">
-                    <v-alert :type="messageType" variant="tonal" v-if="message" :icon="messageIcon">
-                        {{ message }}
-                    </v-alert>
-                </v-col>
-            </v-row>
             <v-form ref="registerForm" @submit.prevent="registerUser" lazy-validation>
                 <v-row v-if="!success">
                     <v-col cols="12">

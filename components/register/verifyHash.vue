@@ -1,14 +1,10 @@
 <template>
     <div>
         <v-card-text v-if="error">
-            <v-row>
-                <v-col cols="12" class="text-center">
-                    <v-alert type="error" title="Oeps.." variant="tonal" icon="mdi-close-circle">
-                        Het lijkt erop dat er iets fout gaat. Probeer het later opnieuw of neem contact met ons op
-                        (Chat, Telefoon of Whatsapp 035-6857888)
-                    </v-alert>
-                </v-col>
-            </v-row>
+            <v-alert type="error" title="Oeps.." variant="tonal" icon="mdi-close-circle">
+                Het lijkt erop dat er iets fout gaat. Probeer het later opnieuw of neem contact met ons op
+                (Chat, Telefoon of Whatsapp 035-6857888)
+            </v-alert>
         </v-card-text>
         <v-card-text v-else>
             <v-row>
