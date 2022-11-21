@@ -14,6 +14,7 @@ export interface Partner {
 }
 
 export interface User {
+    id: number | null,
     name: string
     lastName: string
     street: string

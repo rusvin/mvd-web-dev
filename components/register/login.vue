@@ -21,7 +21,7 @@
                                 id="email-adres"
                                 type="email"
                                 name="email"
-                                color="blue"
+                                color="primary"
                                 :rules="emailRules"
                                 v-model="userEmail"
                                 @keyup.enter="userLogin"
@@ -36,7 +36,7 @@
                                 @click:append-inner="isPasswordVisible = !isPasswordVisible"
                                 id="password"
                                 name="password"
-                                color="blue"
+                                color="primary"
                                 placeholder="Wachtwoord"
                                 :rules="passwordRules"
                                 v-model="userPassword"
@@ -45,7 +45,7 @@
                         />
                     </v-col>
                     <v-col cols="12">
-                        <v-btn color="info" size="x-large" block @click="userLogin">
+                        <v-btn color="primary" size="x-large" block @click="userLogin">
                             Inloggen
                         </v-btn>
                     </v-col>

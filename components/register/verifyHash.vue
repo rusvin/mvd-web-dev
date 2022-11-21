@@ -11,7 +11,7 @@
                 <v-col cols="12" class="text-center">
                     <v-progress-circular
                             :size="50"
-                            color="info"
+                            color="primary"
                             indeterminate
                     ></v-progress-circular>
                     <p class="mt-10 text-lg">

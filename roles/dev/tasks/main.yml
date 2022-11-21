@@ -1,0 +1,83 @@
+---
+    - name: run apt-get update and install python
+      raw: apt-get -y install python
+      become: true
+
+
+    - name: Remove {{ branch }} directory
+      file: path=/var/www/mvd/{{ branch }} state=absent
+
+    - name: Create {{ branch }} directory
+      file: path=/var/www/mvd/{{ branch }} state=directory
+
+    - name: Cloning project into the {{ branch }} directory ...
+      git: repo=git@bitbucket.org:vergelijkdirect/mvd-web.git
+           dest=/var/www/mvd/{{ branch }}
+           version={{ branch }}
+           accept_hostkey=yes
+
+    - name: Create front-end environment
+      copy: src=/var/www/mvd/{{ branch }}/environment/environment.dev.js
+            dest=/var/www/mvd/{{ branch }}/environment/environment.js
+            remote_src=yes
+            owner=www-data
+            group=www-data
+            mode=0755
+
+#    - name: Get running process pm2
+#      shell: "ps -ef | grep -v grep | grep -w pm2 | awk '{print $2}'"
+#      register: running_process
+
+#    - name: kill pm2
+#      shell: "kill {{ item }}"
+#      with_items: "{{ running_process.stdout_lines }}"
+
+#    - name: Setup application name in to the ecosystem.config.js file
+#      replace: dest=/var/www/mijnvd/{{ branch }}/ecosystem.config.js
+#               regexp='mijn'
+#               replace='{{ branch }}-mijn'
+#               backup=no
+
+#    - name: Setup PORT in to the ecosystem.config.js file
+#      replace: dest=/var/www/mijnvd/{{ branch }}/ecosystem.config.js
+#               regexp='npm'
+#               replace='PORT=5{{ port }} npm'
+#               backup=no
+
+    - name: npm install
+      npm: path=/var/www/mvd/{{ branch }}
+#      command: chdir=/var/www/mvd/{{ branch }} npm install
+
+    - name: Get process ID
+      command: chdir=/var/www/mvd/{{ branch }} pm2 pid {{ branch }}
+      register: pm2_pid
+    - debug: var=pm2_pid.stdout
+
+    - name: Remove pm2 process
+      command: chdir=/var/www/mvd/{{ branch }} pm2 delete {{ branch }}
+      when: pm2_pid.stdout != "" 
+
+    - name: npm run dev
+      command: chdir=/var/www/mvd/{{ branch }} pm2 start npm --name "{{ branch }}" -- run dev -- --hostname "localhost" --port 5{{ port }}
+
+    - name: Ensure app is running
+      shell: ps aux | grep node
+      register: app_status
+    - debug: msg={{app_status.stdout_lines}}-
+
+    - name: Set permissions on sites catalog
+      file: dest=/var/www/mvd/{{ branch }}/
+            owner=www-data
+            group=www-data
+            mode=0755
+            recurse=yes
+
+    - name: Create http virtualhost from template
+      template: src=virtualhost.j2
+                dest=/etc/nginx/sites-available/{{branch}}-mvd.conf
+
+    - name: Enable http virtualhost {{ branch }}
+      command: ln -sf /etc/nginx/sites-available/{{branch}}-mvd.conf /etc/nginx/sites-enabled/
+
+    - name: Reload nginx
+      service: name=nginx state=reloaded

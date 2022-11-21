@@ -24,7 +24,7 @@
                                 name="name"
                                 v-model.lazy="userName"
                                 :rules="validationRules.name"
-                                color="blue"
+                                color="primary"
                                 variant="outlined"
                         />
                     </v-col>
@@ -38,7 +38,7 @@
                                 @change="validateEmail"
                                 v-model.lazy="userEmail"
                                 :rules="validationRules.email"
-                                color="blue"
+                                color="primary"
                                 variant="outlined"
                                 :error-messages="emailErrorMessages"
                         />
@@ -53,10 +53,10 @@
                                 maxlength="10"
                                 v-model.lazy="userPhoneNumber"
                                 :rules="validationRules.phone"
-                                color="blue"
+                                color="primary"
                                 variant="outlined"
                         />
-                        <v-checkbox v-model="checkbox" color="blue">
+                        <v-checkbox v-model="checkbox" color="primary">
                             <template v-slot:label>
                                 <small>
                                     Ik ga akkoord met de voorwaarden en Vergelijkdirect.com<br> mag mij telefonisch en per e-mail benaderen.
@@ -65,7 +65,7 @@
                         </v-checkbox>
                     </v-col>
                     <v-col cols="12">
-                        <v-btn color="blue" size="x-large" block @click="registerUser" :disabled="emailErrorMessages || !checkbox">
+                        <v-btn color="primary" size="x-large" block @click="registerUser" :disabled="emailErrorMessages || !checkbox">
                             Aanmelden
                         </v-btn>
                     </v-col>

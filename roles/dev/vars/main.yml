@@ -1,0 +1,4 @@
+---
+    pwd: "{{password}}"
+    dbuser: root
+    port: "{{branch | regex_replace('^M|V.*-(.*)$','\\1')}}"

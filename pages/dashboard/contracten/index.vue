@@ -1,45 +1,19 @@
 <template>
-    <container>
-        <v-row>
-            <v-col md="3">
-                <card>
-                    <h1>User details</h1>
-                    <pre>{{user}}</pre>
-                    <v-btn color="blue" block @click="userLogout">
-                        Logout
-                    </v-btn>
-                </card>
-            </v-col>
-        </v-row>
-    </container>
-
+    <v-card color="primary" variant="tonal">
+        <template v-slot:text>
+            <p class="text-h6 my-2">
+                Geen contract beschikbaar..
+            </p>
+            Niet alle verzekeraars hebben een digitale koppeling met jouw account.
+            Indien je snel je contract nodig hebt, kunnen we je dit uiteraard per <u style="cursor: pointer" @click="isContactsOpened = !isContactsOpened">e-mail of Whatsapp</u> toezenden.
+            Uiteraard werken we er hard aan om je contract in de toekomst inzichtelijk te maken!
+        </template>
+    </v-card>
 </template>
 <script setup lang="ts">
-    import {logout} from "~/composables/useAuth";
-
-    const router = useRouter()
-    const {$mijn} = useNuxtApp()
-    const user = ref({})
-
     definePageMeta({
         middleware: 'auth'
     })
 
-    const userLogout = (): void => {
-        $mijn.logout()
-        logout()
-        router.push({path: '/dashboard/inloggen/'})
-    }
-
-    const sendRequest = async function (): Promise<any> {
-        $mijn.getUserData().then((res: any) => {
-            user.value = res
-        }).catch((err: any) => {
-            console.error(err)
-        })
-    }
-
-    onMounted(() => {
-        sendRequest()
-    })
+    const isContactsOpened = inject("isContactsOpened");
 </script>

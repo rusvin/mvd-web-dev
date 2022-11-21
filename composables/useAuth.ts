@@ -24,6 +24,8 @@ export function logout(): void {
 }
 
 export async function login(email: string, password: string): Promise<boolean> {
+    const { $mijn } = useNuxtApp();
+
     try {
         const res = await $fetch(`${env.mijn.baseUrl}/auth/login`, {
             method: 'POST',
@@ -31,7 +33,7 @@ export async function login(email: string, password: string): Promise<boolean> {
         })
 
         setToken(res.access_token, res.expires_in)
-
+        $mijn.setJWTToken(`Bearer ${res.access_token}`);
         useRouter().push('/dashboard/contracten')
         return true
     } catch (e) {

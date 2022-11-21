@@ -3,7 +3,7 @@ export default {
         url: 'http://master.dev.vergelijkdirect.com/index.php',
     },
     mijn: {
-        url: 'http://master.mijn-api.vergelijkdirect.com',
+        url: 'http://ver-5724.mijn-api.vergelijkdirect.com',
         login: 'layarik93@gmail.com',
         password: '111111',
     },

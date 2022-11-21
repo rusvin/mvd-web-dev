@@ -4,6 +4,7 @@ export default class UserDataPresenter {
     static transformApiUserData(data: any): UserData {
         return {
             user: {
+                id: data.id,
                 name: data.name,
                 lastName: data.last_name,
                 street: data.info.street,

@@ -22,7 +22,7 @@
                                 id="email-adres"
                                 type="email"
                                 name="email"
-                                color="blue"
+                                color="primary"
                                 :rules="validationRules.email"
                                 v-model.lazy="userEmail"
                                 :disabled="isEmailDisabled"
@@ -39,7 +39,7 @@
                                 :type="isPasswordVisible ? 'text' : 'password'"
                                 :append-inner-icon="isPasswordVisible ? 'mdi-lock-open' : 'mdi-lock'"
                                 @click:append-inner="isPasswordVisible = !isPasswordVisible"
-                                color="blue"
+                                color="primary"
                                 :rules="validationRules.password"
                                 v-model.lazy="userPassword"
                                 @keyup.enter="sendPasswordRecoveryConfirm"
@@ -55,7 +55,7 @@
                                 :type="isConfirmVisible ? 'text' : 'password'"
                                 :append-inner-icon="isConfirmVisible ? 'mdi-lock-open' : 'mdi-lock'"
                                 @click:append-inner="isConfirmVisible = !isConfirmVisible"
-                                color="blue"
+                                color="primary"
                                 :rules="validationRules.confirmPassword"
                                 v-model.lazy="userPasswordConfirm"
                                 @keyup.enter="sendPasswordRecoveryConfirm"
@@ -63,12 +63,12 @@
                         />
                     </v-col>
                     <v-col cols="12" v-if="hideInput">
-                        <v-btn block size="x-large" color="blue" @click="gotoDashboard">
+                        <v-btn block size="x-large" color="primary" @click="gotoDashboard">
                             Ga naar inloggen
                         </v-btn>
                     </v-col>
                     <v-col cols="12" v-else>
-                        <v-btn block size="x-large" color="blue" @click="sendPasswordRecoveryConfirm">
+                        <v-btn block size="x-large" color="primary" @click="sendPasswordRecoveryConfirm">
                             Wachtwoord herstellen
                         </v-btn>
                     </v-col>

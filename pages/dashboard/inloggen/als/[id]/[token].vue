@@ -5,7 +5,7 @@
                 <v-col md="4" offset-md="4" class="text-center">
                     <v-progress-circular
                         :size="75"
-                        color="info"
+                        color="primary"
                         indeterminate
                     ></v-progress-circular>
                     <p class="mt-10 text-medium-emphasis text-h6">

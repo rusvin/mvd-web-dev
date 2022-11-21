@@ -77,6 +77,42 @@ class MijnResource extends JWTAuthResource {
             .then((r) => new ResponseHandler(r))
             .catch((e) => new ErrorHandler(e))
     }
+
+    public saveUserData(data: any, userId: number): Promise<any> {
+        return this.apiFetch(`/user/data/${userId}`, {
+            method: 'put',
+            body: data
+        })
+        .then((r) => new ResponseHandler(r))
+        .catch((e) => new ErrorHandler(e))
+    }
+
+    public requestEmailChange(data: { new_email: string }): Promise<any> {
+        return this.apiFetch(`/user/change-email`, {
+            method: 'post',
+            body: data
+        })
+        .then((r) => new ResponseHandler(r))
+        .catch((e) => new ErrorHandler(e))
+    }
+
+    public updateEmailChange(data: { code: string }): Promise<any> {
+        return this.apiFetch(`/user/change-email`, {
+            method: 'put',
+            body: data
+        })
+        .then((r) => new ResponseHandler(r))
+        .catch((e) => new ErrorHandler(e))
+    }
+
+    public setAuthPassword(data: { password: string, password_confirmation: string }): Promise<any> {
+        return this.apiFetch('/auth/password', {
+            method: 'post',
+            body: data,
+        })
+        .then((r) => new ResponseHandler(r))
+        .catch((e) => new ErrorHandler(e))
+    }
 }
 
 export default MijnResource

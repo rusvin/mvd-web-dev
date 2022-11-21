@@ -15,6 +15,24 @@ class ApiResource extends BaseAuthResource {
         .then((r) => new ResponseHandler(r))
         .catch((e) => new ErrorHandler(e))
     }
+
+    public getHouseData(data: { Zipcode: string; HouseNumber: string; HouseNumberAddition: string }) {
+        return this.apiFetch('/v1/zipcode/validate', {
+            method: 'post',
+            body: data,
+        })
+        .then((r) => new ResponseHandler(r))
+        .catch((e) => new ErrorHandler(e))
+    }
+
+    public getHouseDataAdditions(data: { zipcode: string; houseNumber: string; }) {
+        return this.apiFetch('/v2/categories/home/risk/addition', {
+            method: 'post',
+            body: data,
+        })
+        .then((r) => new ResponseHandler(r))
+        .catch((e) => new ErrorHandler(e))
+    }
 }
 
 export default ApiResource

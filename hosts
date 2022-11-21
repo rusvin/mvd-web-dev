@@ -1,0 +1,6 @@
+[stage]
+test..mijn.vergelijkdirect ansible_ssh_host="{{ host }}" ansible_user=root
+[dev]
+dev.mijn.vergelijkdirect ansible_ssh_host="{{ host }}" ansible_user=root
+[live]
+live.mijn.vergelijkdirect ansible_ssh_host="{{ host }}" ansible_user=root

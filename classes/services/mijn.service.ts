@@ -77,6 +77,31 @@ class MijnService {
         const response = await this.client.getUserData()
         return await UserDataPresenter.transformApiUserData(response.next())
     }
+
+    /**
+     * Gets data from API. Transforms it to better names.
+     * @returns {UserData} UserDataPresenter.transformUserData
+     */
+     public async saveUserData(data: UserData, userId: number): Promise<any> {
+        const PresentedData = await UserDataPresenter.transformUserData(data)
+        const response = await this.client.saveUserData(PresentedData, userId)
+        return await UserDataPresenter.transformApiUserData(response.next())
+    }
+
+    public async requestEmailChange(data: { new_email: string }): Promise<any> {
+        const response = await this.client.requestEmailChange(data)
+        return response.next()
+    }
+
+    public async updateEmailChange(data: { code: string }): Promise<any> {
+        const response = await this.client.updateEmailChange(data)
+        return response.next()
+    }
+
+    public async setAuthPassword(data: { password: string, password_confirmation: string }): Promise<any> {
+        const response = await this.client.setAuthPassword(data)
+        return response.next()
+    }
 }
 
 export default MijnService

@@ -1,0 +1,20 @@
+<template>
+    <router-link class="d-inline-block mx-4" to="/dashboard/contracten">
+        <v-img
+            v-if="$vuetify.display.mdAndUp"
+            src="/images/logo-white.svg"
+            class="shrink"
+            max-width="250"
+            min-width="250"
+            transition="scale-transition"
+        />
+        <v-img
+            v-else
+            src="/images/logo-white-small.svg"
+            class="shrink"
+            max-width="50"
+            min-width="50"
+            transition="scale-transition"
+        />
+    </router-link>
+</template>

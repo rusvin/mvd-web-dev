@@ -1,0 +1,13 @@
+.categories-background-color {
+    background-color: #48c529;
+}
+.categories-background-color:hover {
+    background-color: #48c529;
+}
+.button-background-color-focus {
+    background-color: #48c529;
+    border-bottom-color: #48c529;
+}
+.button-background-color-focus:hover {
+    background-color: #48c529;
+}
